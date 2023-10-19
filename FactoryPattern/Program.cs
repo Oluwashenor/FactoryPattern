@@ -13,6 +13,8 @@ builder.Services.AddSingleton<WeatherForecastService>();
 //builder.Services.AddTransient<ITime, Time>();
 //builder.Services.AddSingleton<Func<ITime>>(x => () => x.GetService<ITime>()!);
 builder.Services.AddAbstractFactory<ITime, Time>(); // this line does the same thing as the ones above
+builder.Services.AddAbstractFactory<ISample, Sample>();
+builder.Services.AddGenericClassWithDataFactory();
 
 var app = builder.Build();
 
