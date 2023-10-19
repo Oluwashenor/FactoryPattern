@@ -5,10 +5,12 @@
 @inject IAbstractFactory<ITime> factory
 @inject IAbstractFactory<ISample> sampleFactory
 @inject IUserDataFactory userDataFactory
+@inject IVehicleFactory vehicleFactory
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, @user?.Name</h1>
+<h1>Hello, @user?.Name (Who drives a @vehicle?.VehicleType)</h1>
+<h2>@vehicle?.Start()</h2>
 <h2>@currentTime?.CurrentTime</h2>
 <h2>@randomValue?.RandomValue</h2>
 <button class="btn btn-primary" @onclick="GetNewTime">New Time</button>
@@ -17,10 +19,12 @@
     ITime? currentTime;
     ISample? randomValue;
     IUserData? user;
+    IVehicle? vehicle;
 
     protected override void OnInitialized()
     {
         user = userDataFactory.Create("Adesina");
+        vehicle = vehicleFactory.Create("Truck");
         base.OnInitialized();
     }
 

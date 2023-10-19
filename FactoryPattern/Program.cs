@@ -15,6 +15,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddAbstractFactory<ITime, Time>(); // this line does the same thing as the ones above
 builder.Services.AddAbstractFactory<ISample, Sample>();
 builder.Services.AddGenericClassWithDataFactory();
+builder.Services.AddVehicleFactory();
 
 var app = builder.Build();
 
