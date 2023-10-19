@@ -1,0 +1,27 @@
+﻿@page "/"
+@inject ITime time;
+
+@inject Func<ITime> factory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+<h2>@currentTime?.CurrentTime</h2>
+<button class="btn btn-primary" @onclick="GetFacNewTime">New Time</button>
+
+@code{
+    ITime? currentTime;
+
+    private void GetFacNewTime()
+    {
+        currentTime = factory();
+    }
+
+    private void GetNewTime()
+    {
+        currentTime = time;
+    }
+
+}
+
+
