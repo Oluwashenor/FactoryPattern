@@ -2,6 +2,7 @@ using FactoryPattern.Data;
 using FactoryPattern.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using FactoryPattern.Factories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddTransient<ITime, Time>();
-builder.Services.AddSingleton<Func<ITime>>(x => () => x.GetService<ITime>()!);
+//builder.Services.AddTransient<ITime, Time>();
+//builder.Services.AddSingleton<Func<ITime>>(x => () => x.GetService<ITime>()!);
+builder.Services.AddAbstractFactory<ITime, Time>(); // this line does the same thing as the ones above
 
 var app = builder.Build();
 
